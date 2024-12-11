@@ -1,6 +1,6 @@
 {
   "name": "@whimsical-code/multimethod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript implementation of Clojure's multimethods.",
   "type": "module",
   "repository": {
@@ -11,7 +11,7 @@
   "types": "multimethod.ts",
   "scripts": {
     "test": "vitest",
-    "build": "tsc multimethod.ts"
+    "build": "tsc"
   },
   "keywords": [
     "multimethod",

@@ -1,12 +1,9 @@
-"use strict";
 /**
  * TypeScript implementation of Clojure's multimethods. Note that this is a simplified implementation
  * that only supports strings as dispatch values and doesn't support hierarchical dispatch.
  * See https://clojure.org/reference/multimethods.
  */
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.multimethod = multimethod;
-var defaultDispatch = Symbol("defaultDispatch");
+const defaultDispatch = Symbol("defaultDispatch");
 /**
  * Creates a multimethod with given dispatch function and optional default method implementation.
  * @param dispatchFn - Function that returns a dispatch value (must be a string)
@@ -35,21 +32,17 @@ var defaultDispatch = Symbol("defaultDispatch");
  * shapeArea({ type: "ellipse", width: 2, height: 4 }); // 6.28319
  * ```
  */
-function multimethod(dispatchFn, defaultMethod) {
-    var methods = {};
-    var multimethod = (function () {
+export function multimethod(dispatchFn, defaultMethod) {
+    const methods = {};
+    const multimethod = ((...args) => {
         var _a;
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        var dispatch = dispatchFn.apply(void 0, args);
-        var method = (_a = methods[dispatch]) !== null && _a !== void 0 ? _a : methods[defaultDispatch];
+        const dispatch = dispatchFn(...args);
+        const method = (_a = methods[dispatch]) !== null && _a !== void 0 ? _a : methods[defaultDispatch];
         if (method == null)
-            throw new Error("No method defined for dispatch ".concat(dispatch));
-        return method.apply(void 0, args);
+            throw new Error(`No method defined for dispatch ${dispatch}`);
+        return method(...args);
     });
-    multimethod.method = function (dispatch, method) {
+    multimethod.method = (dispatch, method) => {
         methods[dispatch] = method;
         return multimethod;
     };
