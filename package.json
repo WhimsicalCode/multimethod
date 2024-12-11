@@ -1,0 +1,38 @@
+{
+  "name": "@whimsical-code/multimethod",
+  "version": "1.0.0",
+  "description": "TypeScript implementation of Clojure's multimethods.",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhimsicalCode/multimethod.git"
+  },
+  "main": "multimethod.js",
+  "types": "multimethod.ts",
+  "scripts": {
+    "test": "vitest",
+    "build": "tsc multimethod.ts"
+  },
+  "keywords": [
+    "multimethod",
+    "multimethods",
+    "multi",
+    "method",
+    "multiple dispatch",
+    "dynamic dispatch",
+    "polymorphic",
+    "function",
+    "functions",
+    "types",
+    "ts",
+    "typescript",
+    "js",
+    "javascript"
+  ],
+  "author": "Kaspars Dancis",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}
